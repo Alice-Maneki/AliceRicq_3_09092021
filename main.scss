@@ -1,0 +1,299 @@
+$color-primary: #9356DC;
+$color-secondary: #FF79DA;
+$color-tertiary: #99E2D0;
+$color-shadow: rgb(214,214,214); 
+$color-bg: #F1F1F1;
+$color-footer: rgb(53,53,53);
+$color-btn-start: linear-gradient($color-secondary,$color-primary);
+
+$police-title: 'shrikhand';
+$police-txt: 'roboto';
+
+@mixin txt-h1{
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+@mixin btn{
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    box-shadow: 1px 3px 5px $color-shadow;
+    border: none;
+    background-image: $color-btn-start;
+    color: #fff;
+    font-size: 1rem;
+    
+}
+
+@mixin bloc-notice{
+    border-radius: 20px;
+    background-color: lighten($color-bg,3%);
+    box-shadow: 1px 3px 5px $color-shadow;
+    padding: 5px 0;
+}
+
+@mixin vignette{
+    width: 95%;
+    border-radius: 20px;
+    height: 320Px;
+    border: 0 solid #fff;
+    box-shadow: 1px 3px 3px $color-shadow;
+    position: relative;
+    background-color: #fff;
+    margin: 2%;
+}
+@mixin menu-item{
+    width: 95%;
+    border-radius: 20px;
+    height: 100Px;
+    border: 0 solid #fff;
+    box-shadow: 1px 3px 3px $color-shadow;
+    background-color: #fff;
+    margin: 4%;
+}
+@mixin new{
+    border: 1px solid $color-tertiary;
+    border-radius: 2px;
+    color: darken($color-tertiary,35%);
+    background-color: $color-tertiary;
+    width: 90px;
+    height: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+@mixin footer{
+    background-color: $color-footer;
+    color: #fff;
+    padding: 4%;
+    padding-top: 10%;
+}
+/* structure du code css 
+- polices
+- general
+- header
+- nav
+- aside = fonctionnement
+- section = restautants
+*/
+
+/* polices */
+@font-face {
+    font-family: 'Shrikhand';
+    src: url('./polices/shrikhand/Shrikhand-Regular.ttf');
+    src: url('./polices/shrikhand/Shrikhand-Regular.woff'); 
+}
+@font-face {
+    font-family:  'Roboto';   
+    src: url('./polices/roboto/Roboto-Regular.ttf');
+    src: url('./polices/roboto/RobotoCondensed-Bold.ttf');
+    src: url('./polices/roboto/Roboto-Regular.woff');
+    src: url('./polices/roboto/Roboto-Bold.woff');
+}
+/* général */
+body{
+    font-family:  $police-txt, $police-title, sans-serif, serif;
+    background-color: #fff;
+    color: #000;
+    font-size: 1rem;
+    max-width: 100%;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+/* header */
+.header{
+    width: 100%;
+}
+.header--logo{
+    margin: 10px;
+    text-align: center;
+}
+.header-pages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+      &__return{
+          margin-right: 10%;
+          font-size: 1.2rem;
+      }
+  
+  }
+/* nav:zone de recherce */
+.nav{
+    width: 100%;
+    text-align: center;
+    margin:auto;
+    background-color: lighten($color-bg, 3%);
+    border-top: 3px solid darken($color-bg,10%);
+    font-size : 1rem;
+    padding-bottom: 50px;;
+    &__recherche-zone{
+        display: flex;
+        justify-content: center;
+        background-color: $color-bg;
+        padding: 20px;
+    }
+    &__recherche-zone-icon{
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    &__recherche-zone-barre{
+        border: none;
+        background-color: $color-bg;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+    &__txt h1{
+        @include txt-h1;
+    }
+    &__btn{
+        @include btn;
+        &:hover{
+            color: #000;
+            
+        }
+    }
+}
+
+/* aside : fonctionnement */
+.notice{
+    width:100%;
+    text-align: left;
+    
+    &__bloc{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    &__elt-number{
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        border: 10px solid $color-primary;
+        background-color: $color-primary;
+        color: #fff;
+    }
+    &__elt{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .8rem;
+        @include bloc-notice;
+        &:hover{
+            background-color: lighten($color: $color-primary, $amount: 35%);
+            box-shadow: 1px 3px 3px darken($color-shadow,5%);
+
+        }
+    }
+}
+.notice h1{
+    @include txt-h1;
+    
+}
+.notice i{
+    font-size: 1.2rem;
+    margin-right: 10%;
+}
+
+/* section= restaurants */
+.restaurants{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   background-color: $color-bg;
+   font-size: .9rem;
+   padding-bottom: 10%;
+    &__vignette{
+        @include vignette;
+    }
+    &__new{
+        @include new;
+    }
+    &__infos{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 3%;
+        margin-left: 3%;
+    }
+}
+.restaurants img{
+    width: 100%;
+    height: 210px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+.restaurants i{
+    font-size: 2rem;
+}
+.restaurants h1{
+   @include txt-h1;
+   margin: 3%;
+}
+
+.restaurant img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    position: relative;
+}
+/* section menu */
+.restaurant-menu{
+    width: 100%;
+    background-color: $color-bg;
+   border-radius: 25px 25px 0 0;
+   position: absolute;
+   margin-top: -30px;
+   &__title{
+       text-transform: uppercase;
+       border-bottom: 5px solid $color-tertiary;
+       padding-bottom: 1%;
+        margin: 3%;
+   }
+   &__item{
+       display: flex;
+       justify-content: space-between;
+       align-items: baseline;
+       margin: 3%;
+       @include menu-item;
+   }
+}
+.restaurant-name{
+    font-family: $police-title;
+    font-size: 2rem;
+    font-weight: 1000;
+    display:flex;
+    justify-content: space-between;
+    margin: 10%;
+} 
+.restaurant-btn{
+    width: 100%;
+   height: 1600px;
+   background-color: $color-bg;
+}
+.order-btn{
+    @include btn;
+}
+/* footer */
+.footer{
+    @include footer;
+    &__infos-icon{
+        display: flex;
+        align-items: center;
+    }
+}
+.footer a{
+    text-decoration: none;
+    color: #fff;
+}
+.footer i{
+    margin-right: 2%;
+}

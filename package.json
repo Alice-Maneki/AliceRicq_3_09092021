@@ -1,0 +1,21 @@
+{
+  "name": "ricqalice_3_08092021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass" : "sass --watch ./main.scss:./style.css --style expanded"
+    
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alice-Maneki/RicqAlice_3_08092021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alice-Maneki/RicqAlice_3_08092021/issues"
+  },
+  "homepage": "https://github.com/Alice-Maneki/RicqAlice_3_08092021#readme"
+}
