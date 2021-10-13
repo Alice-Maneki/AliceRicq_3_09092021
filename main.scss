@@ -1,10 +1,14 @@
 $color-primary: #9356DC;
+$color-primary-light: lighten($color-primary,8%);
 $color-secondary: #FF79DA;
+$color-secondary-light: lighten($color-secondary,8%);
 $color-tertiary: #99E2D0;
 $color-shadow: rgb(214,214,214); 
 $color-bg: #F1F1F1;
 $color-footer: rgb(53,53,53);
-$color-btn-start: linear-gradient($color-secondary,$color-primary);
+$color-btn-start: linear-gradient(to bottom right,$color-secondary,$color-primary);
+$color-btn-end: linear-gradient(to bottom right, $color-secondary-light, $color-primary-light);
+$color-heart: linear-gradient($color-primary, $color-secondary);
 
 $police-title: 'shrikhand';
 $police-txt: 'roboto';
@@ -12,9 +16,10 @@ $police-txt: 'roboto';
 @mixin txt-h1{
     font-size: 1.6rem;
     font-weight: 800;
+    padding: 3%;
 }
 @mixin btn{
-    width: 200px;
+    width: 220px;
     height: 50px;
     border-radius: 30px;
     box-shadow: 1px 3px 5px $color-shadow;
@@ -22,14 +27,15 @@ $police-txt: 'roboto';
     background-image: $color-btn-start;
     color: #fff;
     font-size: 1rem;
-    
+    z-index: 1;
+    position: relative;
 }
 
 @mixin bloc-notice{
     border-radius: 20px;
     background-color: lighten($color-bg,3%);
     box-shadow: 1px 3px 5px $color-shadow;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 @mixin vignette{
@@ -40,43 +46,57 @@ $police-txt: 'roboto';
     box-shadow: 1px 3px 3px $color-shadow;
     position: relative;
     background-color: #fff;
-    margin: 2%;
+    margin: 0 5% 5% 5%;
 }
 @mixin menu-item{
     width: 95%;
     border-radius: 20px;
-    height: 100Px;
+    height: 110px;
     border: 0 solid #fff;
     box-shadow: 1px 3px 3px $color-shadow;
     background-color: #fff;
     margin: 4%;
+   display: flex;
+    justify-content: space-between;
+    margin: 3%;
 }
 @mixin new{
     border: 1px solid $color-tertiary;
-    border-radius: 2px;
+    border-radius: 3px;
     color: darken($color-tertiary,35%);
     background-color: $color-tertiary;
-    width: 90px;
-    height: 30px;
-    padding-left: 30px;
-    padding-top: 10px;
+    font-size: 1rem;
+    width: 75px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 15px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
 }
 @mixin footer{
+    
     background-color: $color-footer;
     color: #fff;
-    padding: 4%;
+    padding: 6%;
     padding-top: 10%;
+    
 }
+
+
 /* structure du code css 
 - polices
 - general
+-loading-spinner
 - header
+-header specifique pages menus
 - nav
 - aside = fonctionnement
 - section = restautants
+-section menu de chaque restaurant
+-footer
+-footer specifique pages menus
+
 */
 
 /* polices */
@@ -88,9 +108,9 @@ $police-txt: 'roboto';
 @font-face {
     font-family:  'Roboto';   
     src: url('./polices/roboto/Roboto-Regular.ttf');
-    src: url('./polices/roboto/RobotoCondensed-Bold.ttf');
+    
     src: url('./polices/roboto/Roboto-Regular.woff');
-    src: url('./polices/roboto/Roboto-Bold.woff');
+    
 }
 /* général */
 body{
@@ -105,6 +125,38 @@ a{
     text-decoration: none;
     color: #000;
 }
+/* loading-spinner */
+.loading-spinner{
+    height: 100vh;
+    position: relative;
+    opacity: 1;
+    transition: opacity linear 0.1s;
+    &::before{
+        border: 5px solid $color-shadow;
+        border-bottom-color:$color-primary-light;
+        border-radius: 50%;
+        content:"";
+        height: 100px;
+        width: 100px;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        transform: translate3D(-50%,-50%,0);
+        transform-origin: center;
+        will-change: transform;
+        animation: 2000ms linear infinite loading-spinner;
+        opacity: inherit;
+    }
+}
+@keyframes loading-spinner{
+    from{
+        transform: translate3d(-50%,-50%,0) rotate (0deg);
+    }
+    to{
+        transform: translate3d(-50%,-50%,0) rotate(360deg);
+    }
+}
+
 /* header */
 .header{
     width: 100%;
@@ -113,6 +165,7 @@ a{
     margin: 10px;
     text-align: center;
 }
+/* header specifique pour les pages menus : ajout de la fleche */
 .header-pages{
     display: flex;
     justify-content: center;
@@ -124,7 +177,7 @@ a{
       }
   
   }
-/* nav:zone de recherce */
+/* nav:zone de recherce : specifique page accueil */
 .nav{
     width: 100%;
     text-align: center;
@@ -149,35 +202,29 @@ a{
         font-size: 1.1rem;
         font-weight: bold;
     }
+    &__txt{
+        padding: 5%;
+    }
     &__txt h1{
         @include txt-h1;
     }
     &__btn{
         @include btn;
         &:hover{
-            color: #000;
-            
+            background-image: $color-btn-end;
+            color:$color-footer;
+            box-shadow:1px 3px 5px darken($color-shadow,20%) ;
         }
     }
 }
 
 /* aside : fonctionnement */
 .notice{
-    width:100%;
-    text-align: left;
-    
+    margin-bottom: 50px;
     &__bloc{
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    &__elt-number{
-        border-radius: 50%;
-        width: 15px;
-        height: 15px;
-        border: 10px solid $color-primary;
-        background-color: $color-primary;
-        color: #fff;
+        margin-right: 5%;
+        list-style-type: none;
+        counter-reset: css-counter 0;
     }
     &__elt{
         width: 100%;
@@ -185,6 +232,20 @@ a{
         justify-content: center;
         align-items: center;
         font-size: .8rem;
+        margin-bottom: 5%;
+        counter-increment: css-counter 1;
+        position: relative;
+        &::before{
+            content:counter(css-counter)"";
+            color: #fff;
+            font-size: 1rem;
+            padding: 1px 5px 1px 5px;
+            border-radius: 50%;
+            border: 5px solid $color-primary;
+            background-color: $color-primary;
+            position: absolute;
+            left: -.75rem;
+        }
         @include bloc-notice;
         &:hover{
             background-color: lighten($color: $color-primary, $amount: 35%);
@@ -198,18 +259,19 @@ a{
     
 }
 .notice i{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-right: 10%;
+    color: darken($color-bg,30%);
 }
 
-/* section= restaurants */
+/* section= restaurants accueil */
 .restaurants{
    width: 100%;
    display: flex;
    flex-direction: column;
    background-color: $color-bg;
    font-size: .9rem;
-   padding-bottom: 10%;
+   padding: 5% 0 10% 0;
     &__vignette{
         @include vignette;
     }
@@ -223,77 +285,162 @@ a{
         justify-content: space-between;
         margin-right: 3%;
         margin-left: 3%;
+        &-icon{
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+            opacity: 1;
+            
+            &:hover{
+                opacity: 0;
+            }
+        }
+        &-icon--active{
+            font-size: 2.1rem;
+            color: $color-heart;
+            position: absolute;
+            right: 0.6rem;
+           opacity: 0;
+            transform: scale(1);
+            &:hover{
+                opacity: 1;
+                transform: scale(0);
+                transition: transform 3000ms ease-in-out;
+                
+            }
+        }
+        &-txt-bold{
+            font-size: 1.2rem;
+            font-weight: 1000;
+        }
     }
+
 }
+
 .restaurants img{
     width: 100%;
     height: 210px;
     border-radius: 20px 20px 0 0;
     object-fit: cover;
 }
-.restaurants i{
-    font-size: 2rem;
-}
+
 .restaurants h1{
    @include txt-h1;
-   margin: 3%;
+}
+.restaurants p{
+    font-size: 1.2rem;
 }
 
+/* section menu page de chaque restaurant */
 .restaurant img{
     width: 100%;
     height: 250px;
     object-fit: cover;
     position: relative;
 }
-/* section menu */
 .restaurant-menu{
     width: 100%;
     background-color: $color-bg;
    border-radius: 25px 25px 0 0;
    position: absolute;
    margin-top: -30px;
+   
    &__title{
        text-transform: uppercase;
-       border-bottom: 5px solid $color-tertiary;
-       padding-bottom: 1%;
-        margin: 3%;
+       margin: 10% 0 0 5%;
+       
+        &-underline{
+            background-color: $color-tertiary;
+            width: 40px;
+            height: 3px;
+            margin-left: 5%;
+            margin-top: 1%;
+        }
    }
    &__item{
-       display: flex;
-       justify-content: space-between;
-       align-items: baseline;
-       margin: 3%;
+    
        @include menu-item;
+       
+   }
+   &__txt{
+       font-size: 1.1rem;
+       margin-left: 3%;
+       text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80%;
+       
+       &-bold{
+           font-size: 1.3rem;
+           font-weight: bold;
+       }
+   }
+   &__price{
+       font-size: 1.1rem;
+       font-weight: 1000;
+       margin-right: 4%;
+       margin-top: 68px;
    }
 }
 .restaurant-name{
     font-family: $police-title;
-    font-size: 2rem;
-    font-weight: 1000;
+    font-size: 1.6rem;
     display:flex;
     justify-content: space-between;
-    margin: 10%;
+    margin: 30px 20px 30px 20px;
 } 
+
 .restaurant-btn{
-    width: 100%;
-   height: 1600px;
+   display: flex;
+   justify-content: center;
+    margin-top: 15%;
+    margin-bottom: 15%;
    background-color: $color-bg;
-}
-.order-btn{
-    @include btn;
+    &__order{    
+        @include btn;
+        &:hover{
+            background-image: $color-btn-end;
+            color:$color-footer;
+            box-shadow:1px 3px 5px darken($color-shadow,20%) ;
+        }
+    }
+    
 }
 /* footer */
 .footer{
     @include footer;
+    &__logo{
+        font-family: $police-title;
+       font-size: 1.4rem;
+    }
+    &__infos{
+        display: flex;
+        flex-direction: column;
+        
+    }
     &__infos-icon{
         display: flex;
         align-items: center;
     }
+    
 }
 .footer a{
     text-decoration: none;
     color: #fff;
 }
 .footer i{
+    margin-right: 2%;
+}
+/* specifique footer pages menus */
+.footer-menu{
+    position: relative;
+    top: 1400px;
+    @include footer;
+}
+.footer-menu a{
+    text-decoration: none;
+    color: #fff;
+}
+.footer-menu i{
     margin-right: 2%;
 }
