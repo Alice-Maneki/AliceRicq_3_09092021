@@ -27,8 +27,7 @@ $police-txt: 'roboto';
     background-image: $color-btn-start;
     color: #fff;
     font-size: 1rem;
-    z-index: 1;
-    position: relative;
+    
 }
 
 @mixin bloc-notice{
@@ -83,6 +82,10 @@ $police-txt: 'roboto';
     
 }
 
+@keyframes menu-slidein{
+    from{ transform:translateY(9999px);}
+    to{transform: translateY(0);}
+}
 
 /* structure du code css 
 - polices
@@ -128,12 +131,17 @@ a{
 /* loading-spinner */
 .loading-spinner{
     height: 100vh;
-    position: relative;
     opacity: 1;
-    transition: opacity linear 0.1s;
+    transition: opacity linear 3000ms;
+    position: absolute;
+    left:50%;
+    right: 50%;
+    z-index: 1;
+    animation: fade-out 5s forwards;
     &::before{
         border: 5px solid $color-shadow;
         border-bottom-color:$color-primary-light;
+        border-top-color:$color-secondary-light;
         border-radius: 50%;
         content:"";
         height: 100px;
@@ -146,6 +154,7 @@ a{
         will-change: transform;
         animation: 2000ms linear infinite loading-spinner;
         opacity: inherit;
+
     }
 }
 @keyframes loading-spinner{
@@ -156,7 +165,22 @@ a{
         transform: translate3d(-50%,-50%,0) rotate(360deg);
     }
 }
-
+@keyframes fade-out{
+    from{
+        opacity:1;
+    }
+    to{
+        opacity:0;
+    }
+}
+.main-wrapper-accueil{
+    position: relative;
+    animation: fade-in 4s ease-in;
+}
+@keyframes fade-in{
+    from{  opacity:0; } 
+  to{  opacity:1; }
+}
 /* header */
 .header{
     width: 100%;
@@ -250,7 +274,9 @@ a{
         &:hover{
             background-color: lighten($color: $color-primary, $amount: 35%);
             box-shadow: 1px 3px 3px darken($color-shadow,5%);
-
+                i {
+                    color: $color-primary;
+                }
         }
     }
 }
@@ -283,30 +309,28 @@ a{
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        margin-right: 3%;
+        margin-right: 5.4%;
         margin-left: 3%;
         &-icon{
             font-size: 2rem;
             position: relative;
-            overflow: hidden;
             opacity: 1;
             
-            &:hover{
-                opacity: 0;
-            }
         }
         &-icon--active{
             font-size: 2.1rem;
-            color: $color-heart;
             position: absolute;
-            right: 0.6rem;
+            right: 1.4rem;
            opacity: 0;
+            background: -webkit-linear-gradient($color-primary,$color-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             transform: scale(1);
+            transition: transform 200ms;
             &:hover{
                 opacity: 1;
-                transform: scale(0);
-                transition: transform 3000ms ease-in-out;
-                
+                animation: fade-in 1s ease-in-out;
+                transform: scale(1.1);
             }
         }
         &-txt-bold{
@@ -357,18 +381,51 @@ a{
             margin-top: 1%;
         }
    }
-   &__item{
-    
+   &__item-1{
        @include menu-item;
-       
+       animation: menu-slidein 1500ms 100ms;
    }
+   &__item-2{
+       @include menu-item;
+       animation: menu-slidein 1500ms 200ms;
+   }
+   &__item-3{
+       @include menu-item;
+       animation: menu-slidein 1500ms 300ms;
+   }
+   &__item-4{
+    @include menu-item;
+    animation: menu-slidein 1500ms 400ms;
+}
+&__item-5{
+    @include menu-item;
+    animation: menu-slidein 1500ms 500ms;
+}
+&__item-6{
+    @include menu-item;
+    animation: menu-slidein 1500ms 600ms;
+}
+&__item-7{
+    @include menu-item;
+    animation: menu-slidein 1500ms 700ms;
+}
+&__item-8{
+    @include menu-item;
+    animation: menu-slidein 1500ms 800ms;
+}
+&__item-9{
+    @include menu-item;
+    animation: menu-slidein 1500ms 900ms;
+}
+&__item-10{
+    @include menu-item;
+    animation: menu-slidein 1500ms 1000ms;
+}
    &__txt{
        font-size: 1.1rem;
        margin-left: 3%;
-       text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 80%;
+       width: 80%;
+       
        
        &-bold{
            font-size: 1.3rem;
@@ -381,6 +438,25 @@ a{
        margin-right: 4%;
        margin-top: 68px;
    }
+   &__icon{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       font-size: 2.3rem;
+       color: #fff;
+       background-color: $color-tertiary;
+       border-radius: 0 20px 20px 0;
+       width: 20%;
+       
+   }
+   
+}
+
+.restaurant-menu__txt p{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .restaurant-name{
     font-family: $police-title;
@@ -434,7 +510,7 @@ a{
 /* specifique footer pages menus */
 .footer-menu{
     position: relative;
-    top: 1400px;
+    top: 1450px;
     @include footer;
 }
 .footer-menu a{
@@ -442,5 +518,17 @@ a{
     color: #fff;
 }
 .footer-menu i{
+    margin-right: 2%;
+}
+.footer-menu-long{
+    position: relative;
+    top: 1550px;
+    @include footer;
+}
+.footer-menu-long a{
+    text-decoration: none;
+    color: #fff;
+}
+.footer-menu-long i{
     margin-right: 2%;
 }
