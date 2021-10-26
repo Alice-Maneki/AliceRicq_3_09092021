@@ -8,7 +8,7 @@ $color-bg: #F1F1F1;
 $color-footer: rgb(53,53,53);
 $color-btn-start: linear-gradient(to bottom right,$color-secondary,$color-primary);
 $color-btn-end: linear-gradient(to bottom right, $color-secondary-light, $color-primary-light);
-$color-heart: linear-gradient($color-primary, $color-secondary);
+
 
 $police-title: 'shrikhand';
 $police-txt: 'roboto';
@@ -425,7 +425,7 @@ a{
        font-size: 1.1rem;
        margin-left: 3%;
        width: 80%;
-       
+      
        
        &-bold{
            font-size: 1.3rem;
@@ -437,6 +437,8 @@ a{
        font-weight: 1000;
        margin-right: 4%;
        margin-top: 68px;
+       
+       
    }
    &__icon{
        display: flex;
@@ -446,12 +448,25 @@ a{
        color: #fff;
        background-color: $color-tertiary;
        border-radius: 0 20px 20px 0;
-       width: 20%;
+       width: 25%;
+       height: 110px;
        
    }
    
 }
-
+.restaurant-menu--valid{
+    display: flex;
+    align-items: center;
+}
+.restaurant-menu--valid:hover{
+    i{
+        transform: rotate(1turn);
+       transition: all 500ms 200ms ease-in-out;
+    }
+}
+.restaurant-menu--valid:hover>.restaurant-menu__price{
+    margin-right: 30%;
+}
 .restaurant-menu__txt p{
     width: 100%;
     white-space: nowrap;
@@ -532,3 +547,5 @@ a{
 .footer-menu-long i{
     margin-right: 2%;
 }
+
+/* media tablette et desktop */

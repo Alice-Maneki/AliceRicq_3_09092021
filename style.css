@@ -494,7 +494,22 @@ a {
   color: #fff;
   background-color: #99E2D0;
   border-radius: 0 20px 20px 0;
-  width: 20%;
+  width: 25%;
+  height: 110px;
+}
+
+.restaurant-menu--valid {
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-menu--valid:hover i {
+  transform: rotate(1turn);
+  transition: all 500ms 200ms ease-in-out;
+}
+
+.restaurant-menu--valid:hover > .restaurant-menu__price {
+  margin-right: 30%;
 }
 
 .restaurant-menu__txt p {
@@ -600,5 +615,7 @@ a {
 .footer-menu-long i {
   margin-right: 2%;
 }
+
+/* media tablette et desktop */
 
 /*# sourceMappingURL=style.css.map */
