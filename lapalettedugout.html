@@ -22,7 +22,7 @@
             <title>ohmyfood/La palette du goût</title>
         </head>
 
-        <body>
+        <body class="body">
             <div class="main-wrapper">
                 <header>
                     <div class="header-pages">
@@ -35,7 +35,7 @@
                     </div>
                     
                 </header>
-                <section class="restaurant">
+                <div class="restaurant">
                     <div class="restaurant-picture">
                         <img src="images/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="photo de présentation du restaurant">
                     </div>
@@ -44,6 +44,8 @@
                             La palette du goût
                             <i class="far fa-heart"></i>
                         </span>
+
+                        <div class="desktop">
                         <div class="restaurant-menu__entrées">
                             <span class="restaurant-menu__title">Entrées</span>
                             <div class="restaurant-menu__title-underline"></div>
@@ -56,14 +58,14 @@
                                     <div class="restaurant-menu__price">
                                         <span>25€</span>
                                     </div>
-                                    <div class="restaurant-menu__icon">
-                                        <i class="fas fa-check-circle"></i>
+                                    
                                 </div>
-                                </div>
-                                
+                                <div class="restaurant-menu__icon">
+                                    <i class="fas fa-check-circle"></i>
+                            </div>
                             </a>
                             
-                            <a href="" class="restaurant-menu--valid"></a>
+                            <a href="" class="restaurant-menu--valid">
                                 <div class="restaurant-menu__item-2">
                                     <div class="restaurant-menu__txt">
                                         <p class="restaurant-menu__txt-bold">Foie gras de canard mi-cuit</p>
@@ -155,7 +157,8 @@
                                     <span>23€</span>
                                 </div>
                             </div>
-                        </div>    
+                        </div>   
+                        </div> 
                         <div class="restaurant-btn">
                             <form method="post" action="traitement.php">
                                 <input type="button" value="Commander" class="restaurant-btn__order" />      
@@ -164,7 +167,7 @@
                     </div>
                     
                 
-                </section>
+                </div>
                 
                     
                 <footer class="footer-menu">
