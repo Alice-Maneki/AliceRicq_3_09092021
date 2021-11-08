@@ -429,7 +429,7 @@ a{
        font-size: 1.1rem;
        margin-left: 3%;
        width: 80%;
-      
+      overflow: hidden;
        
        &-bold{
            font-size: 1.3rem;
@@ -439,23 +439,25 @@ a{
    &__price{
        font-size: 1.1rem;
        font-weight: 1000;
-       margin-right: 4%;
+       margin-right: 10px;
+      
        margin-top: 68px;
-       
-       
+       transform: translateX(80px);
+       transition: all 500ms;
    }
-   // pour raoul: partie de l'icône qui translate //
    &__icon{
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       font-size: 2.3rem;
-       color: #fff;
-       background-color: $color-tertiary;
-       border-radius: 0 20px 20px 0;
-       width: 25%;
+       width: 100px;
        height: 110px;
-       
+       background-color: $color-tertiary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.3rem;
+        color:#fff;
+        border-radius: 0 20px 20px 0;
+        transform: scale(0);
+        
+        transition: all 500ms 200ms ease-in;
    }
    
 }
@@ -466,10 +468,21 @@ a{
 .restaurant-menu--valid:hover{
     i{
         transform: rotate(1turn);
-       transition: all 500ms 200ms ease-in-out;
-    }// fait tourner l'icône au survol du bloc entier //
+       transition: all 500ms ease-in-out;
+    }
 }
-// pour raoul //
+.restaurant-menu--valid:hover .restaurant-menu__icon{
+    animation: item-appear 700ms forwards;
+    transform: scale(1);
+}
+.restaurant-menu--valid:hover .restaurant-menu__price{
+    transform: translateX(0);
+}
+@keyframes item-appear {
+    from{ transform: translate(25px);}
+    to{transform: translate(0);}
+    
+}
 .restaurant-menu__txt p{
     width: 100%;
     white-space: nowrap;
@@ -528,7 +541,7 @@ a{
 /* specifique footer pages menus */
 .footer-menu{
     position: relative;
-    top: 1750px;
+    top: 1900px;
     @include footer;
 }
 .footer-menu a{
@@ -540,7 +553,7 @@ a{
 }
 .footer-menu-long{
     position: relative;
-    top: 1850px;
+    top: 2050px;
     @include footer;
 }
 .footer-menu-long a{
@@ -603,8 +616,9 @@ a{
     }
     .desktop{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
+    
     .footer-menu-long{
         position: relative;
         top:960px;
