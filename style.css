@@ -329,6 +329,7 @@ a {
 
 .restaurant-menu {
   width: 100%;
+  height: 2000px;
   background-color: #F1F1F1;
   border-radius: 25px 25px 0 0;
   position: absolute;
@@ -604,7 +605,7 @@ a {
 /* specifique footer pages menus */
 .footer-menu {
   position: relative;
-  top: 1900px;
+  top: 1950px;
   background-color: #353535;
   color: #fff;
   padding: 6%;
@@ -685,6 +686,7 @@ a {
 
   .restaurant-menu {
     width: 90%;
+    height: 1000px;
     margin-left: 5%;
     margin-top: -50px;
   }
