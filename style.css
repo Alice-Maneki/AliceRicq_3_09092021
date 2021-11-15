@@ -665,7 +665,7 @@ a {
 
   .footer {
     padding: 1%;
-    padding-left: 70%;
+    padding-left: 10%;
   }
 
   /* page menus */
@@ -705,12 +705,12 @@ a {
     position: relative;
     top: 960px;
     padding: 1%;
-    padding-left: 70%;
+    padding-left: 10%;
   }
 
   .footer-menu {
     padding: 1%;
-    padding-left: 70%;
+    padding-left: 10%;
     position: relative;
     top: 830px;
   }
