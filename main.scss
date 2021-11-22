@@ -479,6 +479,12 @@ a{
 .restaurant-menu--valid:hover .restaurant-menu__price{
     transform: translateX(0);
 }
+.restaurant-menu--valid:hover .restaurant-menu__txt{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 @keyframes item-appear {
     from{ transform: translate(25px);}
     to{transform: translate(0);}
