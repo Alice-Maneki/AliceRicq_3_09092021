@@ -525,6 +525,7 @@ a {
 
 .restaurant-menu--valid:hover .restaurant-menu__price {
   transform: translateX(0);
+  font-size: 1.3rem;
 }
 
 .restaurant-menu--valid:hover .restaurant-menu__txt {
